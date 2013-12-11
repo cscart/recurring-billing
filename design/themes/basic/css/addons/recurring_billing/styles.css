@@ -1,0 +1,120 @@
+/* Recurring billing*/
+.subscribtion-content .control-group {
+    padding-left: 0;
+}
+.subscribtion-content .control-group label {
+    float: left;
+    margin-left: 0;
+    width: 120px;
+    font-weight: normal;
+}
+.subscribtion-content .options-wrapper .control-group label {
+    font-weight: bold;
+}
+.subscribtion-content .control-group span {
+    display: inline-block;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.subscribtion-content .control-group .option-radio-group {
+    margin: 0;
+}
+.subscribtion-content .control-group .help-inline {
+    display: block;
+    margin-left: 120px;
+}
+.subscribtion-content .control-group .option-items {
+    width: auto;
+}
+.subscribtion-content .control-group .option-items .help-inline  {
+    margin-left: 0;
+}
+.subscribtion-content .control-group .description {
+    margin-left: 120px;
+}
+.subscribtion-content .control-group .radio,
+.subscribtion-content .control-group .checkbox {
+    margin: 0 6px 2px 0;
+    padding: 0;
+}
+.subscribtion-content .option-radio-group li {
+    clear: both;
+}
+.product-main-info .subscribtion-content .fileuploader .upload-file-local,
+.product-main-info .subscribtion-content .fileuploader .upload-file-section {
+    margin-left: 120px;
+}
+.subscribtion-content .control-group .fileuploader span {
+    padding-top: 0;
+}
+.subscription-info {
+    margin: 15px 0 30px;
+}
+.subscription-option {
+    margin: 15px 0 5px;
+    padding: 10px 15px;
+    background-color: #f3f3f3;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.subscription .period {
+    clear: none;
+    margin-top: 9px;
+}
+.subscription .control-group {
+    margin: 6px 0 11px 0;
+}
+.subscription .period-type {
+    margin: 7px 0 0 0;
+}
+.subscription select {
+    min-width: 180px;
+}
+.subscription .table td {
+    vertical-align: middle;
+    padding: 6px 10px 6px 10px;
+}
+.subscription .buttons-container {
+    border-top: 1px solid #ddd;
+    border-radius: 0px 0px 3px 3px;
+    padding: 17px 20px 17px 20px;
+    margin-top: 30px;
+}
+.subscription-products {
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0;
+    position: relative;
+}
+.subscription-products p {
+    font-weight: normal;
+    padding: 3px 0 0 0;
+    color: #666666;
+}
+.subscription-products-arrow {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    width: 15px;
+}
+.subscription-products-link {
+    overflow: hidden;
+    margin-top: 10px;
+}
+.subscription-products-button {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.long .subscribtion-content .options-wrapper label {
+    float: none;
+}
+.long.product-main-info .subscribtion-content .fileuploader .upload-file-section,
+.long.product-main-info .subscribtion-content .fileuploader .upload-file-local, 
+.long .subscribtion-content .control-group .help-inline,
+.long .subscribtion-content .control-group .description {
+    margin-left: 0;
+}
+/* /Recurring billing*/

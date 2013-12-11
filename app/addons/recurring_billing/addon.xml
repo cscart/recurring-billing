@@ -1,0 +1,750 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>recurring_billing</id>
+    <name>Recurring billing</name>
+    <description><![CDATA[<i><strong>Deprecated</strong>. To be excluded from v. 4.1.1. Learn more in the <a href="http://forum.cs-cart.com/topic/33444-some-add-ons-to-be-excluded-from-cs-cart-411/">official announcement</a>.</i>]]></description>
+    <translations>
+        <item for="name" lang="el">Επαναλαμβανόμενη χρέωση</item>
+        <item for="name" lang="it">Piani ricorrenti</item>
+        <item for="name" lang="ro">Facturare recurentă</item>
+        <item for="name" lang="ru">Периодические платежи</item>
+        <item for="name" lang="zh">循环帐单</item>
+        <item for="description" lang="ru"><![CDATA[<i><strong>Устаревший модуль</strong>. Данный модуль будет исключен из базовой поставки, начиная с версии 4.1.1. Узнайте больше в <a href="http://forum.cs-cart.com/topic/33444-some-add-ons-to-be-excluded-from-cs-cart-411/">официальном анонсе</a>.</i>]]></item>
+        <item for="description" lang="zh">可以定期订购并设置状态通知</item>
+    </translations>
+    <priority>3400</priority>
+    <position>130</position>
+    <status>active</status>
+    <default_language>en</default_language>
+    <tab_order>prepend</tab_order>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <translations>
+                   <item lang="zh">常规</item>
+                </translations>
+                <items>
+                    <item id="rb_initial_order_status">
+                        <name>Initial status for recurring orders</name>
+                        <type>selectbox</type>
+                        <translations>
+                            <item lang="ru">Начальный статус заказа при подписке</item>
+                            <item lang="zh">初始循环订购状态</item>
+                        </translations>
+                    </item>
+                    <item id="rb_fail_attempts">
+                        <name>Number of attempts after order failed</name>
+                        <type>input</type>
+                        <default_value>3</default_value>
+                        <translations>
+                            <item lang="ru">Количество попыток после неудавшегося заказа</item>
+                            <item lang="zh">在定单失败后尝试次数</item>
+                        </translations>
+                    </item>
+                    <item id="rb_attempt_period">
+                        <name>Next attempt if order failed (days)</name>
+                        <type>input</type>
+                        <default_value>1</default_value>
+                        <translations>
+                            <item lang="ru">Следующая попытка, если заказ не удался (дни)</item>
+                            <item lang="zh">若定单失败后下次尝试(天)</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="orders">
+                <name>Orders</name>
+                <translations>
+                   <item lang="zh">订单</item>
+                </translations>
+                <items>
+                    <item id="additional_settings">
+                        <type>template</type>
+                        <default_value>rb_order_status_settings.tpl</default_value>
+                        <translations>
+                            <item lang="ru">Next attempt if order failed (days)</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="rb_notification">
+                <name>Notification</name>
+                <translations>
+                    <item lang="zh">通知</item>
+                </translations>
+                <items>
+                    <item id="additional_settings_lang">
+                        <type>template</type>
+                        <default_value>rb_notification_settings_lang.tpl</default_value>
+                    </item>
+                    <item id="rb_manual_pay_header">
+                        <name>Notification of manual paying</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Уведомление об оплате вручную</item>
+                            <item lang="zh">手动支付通知</item>
+                        </translations>
+                    </item>
+                    <item id="rb_manual_pay_duration">
+                        <name>Notification duration (days)</name>
+                        <type>input</type>
+                        <default_value>3</default_value>
+                        <translations>
+                            <item lang="ru">Продолжительность уведомления (дни)</item>
+                            <item lang="zh">通知时间(天)</item>
+                        </translations>
+                    </item>
+                    <item id="additional_settings_manual">
+                        <type>template</type>
+                        <default_value>rb_notification_settings_manual.tpl</default_value>
+                        <translations>
+                            <item lang="ru">Notification duration (days)</item>
+                        </translations>
+                    </item>
+                    <item id="rb_future_pay_header">
+                        <name>Notification of future paying</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Уведомление о будущих оплатах</item>
+                            <item lang="zh">未来的支付通知</item>
+                        </translations>
+                    </item>
+                    <item id="rb_future_pay_duration">
+                        <name>Notification duration (days)</name>
+                        <type>input</type>
+                        <default_value>3</default_value>
+                        <translations>
+                            <item lang="ru">Продолжительность уведомления (дни)</item>
+                            <item lang="zh">通知时间(天)</item>
+                        </translations>
+                    </item>
+                    <item id="additional_settings_future">
+                        <type>template</type>
+                        <default_value>rb_notification_settings_future.tpl</default_value>
+                        <translations>
+                            <item lang="ru">Notification duration (days)</item>
+                        </translations>
+                    </item>
+                    <item id="rb_changing_header">
+                        <name>Notification of subscription changing</name>
+                        <type>header</type>
+                        <translations>
+                            <item lang="ru">Уведомление о смене подписки</item>
+                            <item lang="zh">订阅变更通知</item>
+                        </translations>
+                    </item>
+                    <item id="additional_settings_changing">
+                        <type>template</type>
+                        <default_value>rb_notification_settings_changing.tpl</default_value>
+                        <translations>
+                            <item lang="ru">Notification of subscription changing</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item for="demo" type='file'>database/demo.sql</item>
+        <item for="demo" type='file' editions="ULTIMATE">database/demo_ultimate.sql</item>
+        <item>DROP TABLE IF EXISTS ?:recurring_plans</item>
+        <item>
+            CREATE TABLE IF NOT EXISTS ?:recurring_plans (
+                `plan_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `price` text NOT NULL, `product_ids` text NOT NULL,
+                `period` char(1) NOT NULL default 'A',
+                `by_period` mediumint(8) NOT NULL,
+                `pay_day` mediumint(8) NOT NULL,
+                `duration` mediumint(8) NOT NULL,
+                `start_price` text NOT NULL,
+                `start_duration` mediumint(8) NOT NULL,
+                `start_duration_type` char(1) NOT NULL default 'D',
+                `allow_change_duration` char(1) NOT NULL default 'N',
+                `allow_unsubscribe` char(1) NOT NULL default 'N',
+                `allow_free_buy` char(1) NOT NULL default 'N',
+                `status` char(1) NOT NULL default 'A',
+                PRIMARY KEY (`plan_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        </item>
+        <item editions="ULTIMATE">
+            ALTER TABLE `?:recurring_plans`
+            ADD COLUMN `company_id` int(11) unsigned NOT NULL DEFAULT '0',
+            ADD KEY `company_id` (`company_id`);
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:recurring_plans</item>
+        <item for="uninstall">DELETE FROM ?:common_descriptions WHERE object_holder = 'recurring_plans'</item>
+        <item>DROP TABLE IF EXISTS ?:recurring_subscriptions</item>
+        <item>
+            CREATE TABLE IF NOT EXISTS ?:recurring_subscriptions (
+                `subscription_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `order_id` mediumint(8) unsigned NOT NULL,
+                `plan_id` mediumint(8) unsigned NOT NULL,
+                `user_id` mediumint(8) unsigned NOT NULL,
+                `firstname` varchar(32) NOT NULL default '',
+                `lastname` varchar(32) NOT NULL default '',
+                `email` varchar(128) NOT NULL default '',
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `last_timestamp` int(11) unsigned NOT NULL default '0',
+                `end_timestamp` int(11) unsigned NOT NULL default '0',
+                `order_ids` text NOT NULL,
+                `product_ids` text NOT NULL,
+                `start_price` decimal(12,2) NOT NULL default '0.00',
+                `price` decimal(12,2) NOT NULL default '0.00',
+                `duration` mediumint(8) NOT NULL,
+                `orig_duration` mediumint(8) NOT NULL,
+                `status` char(1) NOT NULL default 'A',
+                PRIMARY KEY (`subscription_id`),
+                KEY `status` (`status`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:recurring_subscriptions</item>
+        <item>DROP TABLE IF EXISTS ?:recurring_events</item>
+        <item>
+            CREATE TABLE IF NOT EXISTS ?:recurring_events (
+                `event_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `subscription_id` mediumint(8) unsigned NOT NULL,
+                `timestamp` int(11) unsigned NOT NULL default '0',
+                `event_type` char(1) NOT NULL default 'C',
+                PRIMARY KEY (`event_id`),
+                KEY `subscription_id` (`subscription_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:recurring_events</item>
+        <item>ALTER TABLE ?:usergroups ADD `recurring_plans_ids` varchar(255) NOT NULL default ''</item>
+        <item for="uninstall">ALTER TABLE ?:usergroups DROP COLUMN `recurring_plans_ids`</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_recurring_plans', 'Y', 'addons')</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege = 'manage_recurring_plans'</item>
+        <item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_subscriptions', 'Y', 'addons')</item>
+        <item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege = 'manage_subscriptions'</item>
+        <item table="common_descriptions" lang="en" for="demo">REPLACE INTO ?:common_descriptions (`object_id`, `object_type`, `description`, `lang_code`, `object`, `object_holder`) VALUES ('1', '', '', 'en', 'Test recurring plan', 'recurring_plans');</item>
+        <item table="common_descriptions" lang="ru" for="demo">REPLACE INTO ?:common_descriptions (`object_id`, `object_type`, `description`, `lang_code`, `object`, `object_holder`) VALUES ('1', '', '', 'ru', 'Test recurring plan', 'recurring_plans');</item>
+        <item table="common_descriptions" lang="el" for="demo">REPLACE INTO ?:common_descriptions (`object_id`, `object_type`, `description`, `lang_code`, `object`, `object_holder`) VALUES ('1', '', '', 'el', 'Δοκιμαστικό επαναλαμβανόμενο πλάνο', 'recurring_plans');</item>
+    </queries>
+    <language_variables>
+        <item lang="en" id="rb_please_select_store_to_update">Please select store to update plan.</item>
+        <item lang="en" id="rb_please_select_store">Please select a store.</item>
+        <item lang="en" id="rb_manual_pay_email_subject">Payment required</item>
+        <item lang="en" id="rb_manual_pay_email_header">The subscription must be paid manually.</item>
+        <item lang="en" id="rb_future_pay_email_subject">Payment is approaching</item>
+        <item lang="en" id="rb_future_pay_email_header">Payment for the subscription is approaching.</item>
+        <item lang="en" id="rb_subscription_changing_email_subject">The subscription has been changed</item>
+        <item lang="en" id="rb_subscription_changing_email_header">The subscription has been changed.</item>
+        <item lang="en" id="rb_recurring_plan">Recurring plan</item>
+        <item lang="en" id="rb_notification_duration">Notification duration (days)</item>
+        <item lang="en" id="rb_recurring_plans">Recurring plans</item>
+        <item lang="en" id="recurring_plans">Recurring plans</item>
+        <item lang="en" id="rb_recurring_plan_id">Recurring plan ID</item>
+        <item lang="en" id="rb_recurring_period">Recurring period</item>
+        <item lang="en" id="rb_recurring_period_value">Recurring period value (days)</item>
+        <item lang="en" id="rb_notification">Notification</item>
+        <item lang="en" id="rb_annually">Annually</item>
+        <item lang="en" id="rb_quarterly">Quarterly</item>
+        <item lang="en" id="rb_monthly">Monthly</item>
+        <item lang="en" id="rb_weekly">Weekly</item>
+        <item lang="en" id="rb_by_period">By period</item>
+        <item lang="en" id="rb_pay_day">Pay day</item>
+        <item lang="en" id="rb_price">Recurring price</item>
+        <item lang="en" id="rb_duration">Recurring duration (months)</item>
+        <item lang="en" id="rb_duration_short">Duration</item>
+        <item lang="en" id="rb_start_price">Recurring start price</item>
+        <item lang="en" id="rb_start_duration">Recurring start duration</item>
+        <item lang="en" id="rb_note">Recurring note</item>
+        <item lang="en" id="rb_allow_setup_duration">Allow customers to set up duration</item>
+        <item lang="en" id="rb_allow_unsubscribe">Allow customers to unsubscribe</item>
+        <item lang="en" id="rb_allow_buy_without_subscription">Allow to buy products without subscription</item>
+        <item lang="en" id="rb_buy_product_without_subscription">Buy product without subscription</item>
+        <item lang="en" id="rb_new_plan">New recurring plan</item>
+        <item lang="en" id="rb_editing_plan">Editing recurring plan</item>
+        <item lang="en" id="rb_recurring_billing_settings">Recurring billing settings</item>
+        <item lang="en" id="rb_add_recurring_plans_and_close">Add recurring plans and close</item>
+        <item lang="en" id="rb_add_recurring_plans">Add recurring plans</item>
+        <item lang="en" id="rb_subscription">Subscription</item>
+        <item lang="en" id="rb_subscriptions">Subscriptions</item>
+        <item lang="en" id="rb_view_subscriptions">View subscriptions</item>
+        <item lang="en" id="rb_viewing_subscription">Viewing subscription</item>
+        <item lang="en" id="rb_unsubscribed">Unsubscribed</item>
+        <item lang="en" id="rb_subscription_status">Subscription status</item>
+        <item lang="en" id="rb_subscribed_products">Subscribed products</item>
+        <item lang="en" id="rb_creation_date">Creation date</item>
+        <item lang="en" id="rb_period_type">Period type</item>
+        <item lang="en" id="rb_subscription_events">Subscription events</item>
+        <item lang="en" id="rb_attempt_charging">Attempt to pay the failed order</item>
+        <item lang="en" id="rb_notification_manual_paying">Notification of manual paying</item>
+        <item lang="en" id="rb_notification_future_paying">Notification of future paying</item>
+        <item lang="en" id="rb_charge_subscription">Charge subscription</item>
+        <item lang="en" id="rb_process_selected_events">Process selected events</item>
+        <item lang="en" id="rb_will_be_deleted_with_order">will be deleted together with order</item>
+        <item lang="en" id="rb_will_be_charged_on">will be charged on</item>
+        <item lang="en" id="rb_no_subscriptions_to_process">There is no subscriptions to process.</item>
+        <item lang="en" id="rb_subscriptions_processed">All subscriptions were processed.</item>
+        <item lang="en" id="rb_unsubscribed_status_not_changed">Status of Unsubscribed subscriptions can not be changed</item>
+        <item lang="en" id="rb_duration_did_not_null">Duration value is not valid</item>
+        <item lang="en" id="rb_subscription_inactive">The subscription is not active</item>
+        <item lang="en" id="rb_have_events"><![CDATA[You have active recurring events. <p><a href="[link]" class="underlined"><b>Process events &#155;&#155;</b></a></p>]]></item>
+        <item lang="en" id="rb_subscription_charged">The subscription was charged successfully.</item>
+        <item lang="en" id="rb_subscriptions_charged">The subscriptions were charged successfully.</item>
+        <item lang="en" id="rb_pay">Pay</item>
+        <item lang="en" id="rb_edit_subscription">Edit subscription</item>
+        <item lang="en" id="rb_add_subscription">Add subscription</item>
+        <item lang="en" id="rb_usergroup_plan">The user group will be assigned to the users purchasing products on the listed plan(s)</item>
+        <item lang="en" id="rb_subscriptions_note">View available subscriptions</item>
+        <item lang="en" id="rb_settings_orders_tooltip"><![CDATA[This value will be saved to the '[name]' language variable. Manage language variables on the <a href="[link]">Languages</a> page.]]></item>
+        <item lang="en" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Duration of the initial period.</item>
+        <item lang="en" id="privileges.manage_recurring_plans">Manage recurring plans</item>
+        <item lang="en" id="privileges.manage_subscriptions">Manage subscriptions</item>
+
+        <item lang="da" id="rb_changing_email_header_def_value">Den tegning er blevet ændret.</item>
+        <item lang="da" id="rb_changing_email_header">E-mail-overskriften</item>
+        <item lang="da" id="rb_changing_email_subject_def_value">Den tegning er blevet ændret</item>
+        <item lang="da" id="rb_changing_email_subject'">E-mail-emne</item>
+        <item lang="da" id="rb_changing_header">Anmeldelse af abonnement forandring</item>
+        <item lang="da" id="rb_fail_attempts">Antal forsøg efter bestilling mislykkedes</item>
+        <item lang="da" id="rb_future_pay_duration">Anmeldelse varighed (DAge)</item>
+        <item lang="da" id="rb_future_pay_email_header">E-mail-overskriften</item>
+        <item lang="da" id="rb_future_pay_email_subject_def_value">Betaling nærmer</item>
+        <item lang="da" id="rb_future_pay_email_subject">E-mail-emne</item>
+        <item lang="da" id="rb_future_pay_header">Anmeldelse af fremtidige betale</item>
+        <item lang="da" id="rb_initial_order_status">Initial status for gentagne ordrer</item>
+        <item lang="da" id="rb_manual_pay_duration">Anmeldelse varighed (DAge)</item>
+        <item lang="da" id="rb_manual_pay_email_header">E-mail-overskriften</item>
+        <item lang="da" id="rb_manual_pay_email_subject_def_value">Betaling kræves</item>
+        <item lang="da" id="rb_manual_pay_email_subject">E-mail-emne</item>
+        <item lang="da" id="rb_manual_pay_header">Anmeldelse af manuelle betale</item>
+        <item lang="da" id="privileges.manage_recurring_plans">Administrer tilbagevendende planer</item>
+        <item lang="da" id="privileges.manage_subscriptions">Administrer abonnementer</item>
+
+        <item lang="el" id="rb_attempt_period">Επόμενη προσπάθεια εαν αποτύχει η παραγγελία(μέρες)</item>
+        <item lang="el" id="rb_changing_email_header_def_value">Η συνδρομή σας τροποποιήθηκε</item>
+        <item lang="el" id="rb_changing_email_header">Πληροφορίες  μηνύματος ηλεκτρονικού ταχυδρομείου (e-mail)</item>
+        <item lang="el" id="rb_changing_email_subject_def_value">Η συνδρομή σας τροποποιήθηκε</item>
+        <item lang="el" id="rb_changing_email_subject">Θέμα  μηνύματος ηλεκτρονικού ταχυδρομείου (e-mail)</item>
+        <item lang="el" id="rb_changing_header">Κοινοποίηση τροποποίησης συνδρομ΄ής</item>
+        <item lang="el" id="rb_fail_attempts">Αριθμός προσπαθειών μετά την αποτυχία της παραγγελίας</item>
+        <item lang="el" id="rb_future_pay_duration">Διάρκεια κοινοποίησης(μέρες)</item>
+        <item lang="el" id="rb_future_pay_email_header_def_value">Η πληρωμή για την εγγραφή πλησιάζει.</item>
+        <item lang="el" id="rb_future_pay_email_header">Επικεφαλίδα  μηνύματος ηλεκτρονικού ταχυδρομείου (e-mail)</item>
+        <item lang="el" id="rb_future_pay_email_subject_def_value">Η πληρωμή πλησιάζει</item>
+        <item lang="el" id="rb_future_pay_email_subject">Θέμα  μηνύματος ηλεκτρονικού ταχυδρομείου (e-mail)</item>
+        <item lang="el" id="rb_future_pay_header">Κοινοποίηση μελλοωτικής πληρωμής</item>
+        <item lang="el" id="rb_initial_order_status">Αρχική κατάταση επαναλαμβανόμενων παραγγελιών</item>
+        <item lang="el" id="rb_manual_pay_duration">Διάρκεια κοινοποίησης(μέρες)</item>
+        <item lang="el" id="rb_manual_pay_email_header_def_value">Η συνδρομή πρέπει να πληρωθεί χειροκίνητα</item>
+        <item lang="el" id="rb_manual_pay_email_header">Πληροφορίες  μηνύματος ηλεκτρονικού ταχυδρομείου (e-mail)</item>
+        <item lang="el" id="rb_manual_pay_email_subject_def_value">Απαιτείται πληρωμή</item>
+        <item lang="el" id="rb_manual_pay_email_subject">Πηροφορίες μηνύματος ηλεκτρονικού ταχυδρομείου (e-mail)</item>
+        <item lang="el" id="rb_manual_pay_header">Κοινοποίηση χειροκίνητης πληρωμής </item>
+        <item lang="el" id="privileges.manage_recurring_plans">Διαχείρηση επαναλαμβανόμενων σχεδίων</item>
+        <item lang="el" id="privileges.manage_subscriptions">Διαχείρηση συνδρομών</item>
+
+        <item lang="ro" id="recurring_billing', 'rb_attempt_period">Dacă comanda a eșuat, ea poate fi reluată în (zile)</item>
+        <item lang="ro" id="recurring_billing', 'rb_changing_email_header_def_value">Abonamentul a fost schimbat</item>
+        <item lang="ro" id="recurring_billing', 'rb_changing_email_header">Antet e-mail</item>
+        <item lang="ro" id="recurring_billing', 'rb_changing_email_subject_def_value">Abonamentul a fost schimbat</item>
+        <item lang="ro" id="recurring_billing', 'rb_changing_email_subject">Subiectul e-mail-ului</item>
+        <item lang="ro" id="recurring_billing', 'rb_changing_header">Notificare a schimbării aboamentului</item>
+        <item lang="ro" id="recurring_billing', 'rb_fail_attempts">Numărul de încercări după care comanda va considerată eșuată</item>
+        <item lang="ro" id="recurring_billing', 'rb_future_pay_duration">Durata notificării (zile)</item>
+        <item lang="ro" id="recurring_billing', 'rb_future_pay_email_header_def_value">Termenul de plată pentru abonare se aproprie.</item>
+        <item lang="ro" id="recurring_billing', 'rb_future_pay_email_header">Antent e-mail</item>
+        <item lang="ro" id="recurring_billing', 'rb_future_pay_email_subject_def_value">Termenul de plată se aproprie</item>
+        <item lang="ro" id="recurring_billing', 'rb_future_pay_email_subject">Subiect-ul e-mail-ului</item>
+        <item lang="ro" id="recurring_billing', 'rb_future_pay_header">Notificare a plății viitoare</item>
+        <item lang="ro" id="recurring_billing', 'rb_initial_order_status">Starea inițială a comenzilor recurente</item>
+        <item lang="ro" id="recurring_billing', 'rb_manual_pay_duration">Durata notificării (zile)</item>
+        <item lang="ro" id="recurring_billing', 'rb_manual_pay_email_header_def_value">Înscrierea trebuie plătită în mod manual.</item>
+        <item lang="ro" id="recurring_billing', 'rb_manual_pay_email_header">Antet e-mail</item>
+        <item lang="ro" id="recurring_billing', 'rb_manual_pay_email_subject_def_value">Plată necesară</item>
+        <item lang="ro" id="recurring_billing', 'rb_manual_pay_email_subject">Subiectul e-mail-ului</item>
+        <item lang="ro" id="recurring_billing', 'rb_manual_pay_header">Notificare a plății manuale</item>
+        <item lang="ro" id="privileges.manage_recurring_plans">Gestionați planurile generale</item>
+        <item lang="ro" id="privileges.manage_subscriptions">Gestionați abonamente</item>
+
+        <item lang="ru" id="rb_please_select_store_to_update">Пожалуйста, выберите магазин, чтобы обновить план</item>
+        <item lang="ru" id="rb_please_select_store">Пожалуйста, выберите план.</item>
+        <item lang="ru" id="rb_manual_pay_email_subject">Требуется оплата</item>
+        <item lang="ru" id="rb_manual_pay_email_header">Подписка должна быть оплачена вручную.</item>
+        <item lang="ru" id="rb_future_pay_email_subject">Приближается день платежа</item>
+        <item lang="ru" id="rb_future_pay_email_header">Приближается день платежа за подписку</item>
+        <item lang="ru" id="rb_subscription_changing_email_subject">Подписка изменена</item>
+        <item lang="ru" id="rb_subscription_changing_email_header">Подписка изменена.</item>
+        <item lang="ru" id="rb_recurring_plan">Периодический платеж</item>
+        <item lang="ru" id="rb_notification_duration">Продолжительность рассылки уведомлений (в днях)</item>
+        <item lang="ru" id="rb_recurring_plans">Периодические платежи</item>
+        <item lang="ru" id="recurring_plans">Периодические планы</item>
+        <item lang="ru" id="rb_recurring_plan_id">Идентификатор периодического плана</item>
+        <item lang="ru" id="rb_recurring_period">Период платежа</item>
+        <item lang="ru" id="rb_recurring_period_value">Длительность периода платежа (в днях)</item>
+        <item lang="ru" id="rb_notification">Уведомление</item>
+        <item lang="ru" id="rb_annually">Ежегодно</item>
+        <item lang="ru" id="rb_quarterly">Поквартально</item>
+        <item lang="ru" id="rb_monthly">Ежемесячно</item>
+        <item lang="ru" id="rb_weekly">Еженедельно</item>
+        <item lang="ru" id="rb_by_period">Задать период</item>
+        <item lang="ru" id="rb_pay_day">День платежа</item>
+        <item lang="ru" id="rb_price">Периодическая цена</item>
+        <item lang="ru" id="rb_duration">Продолжительность подписки</item>
+        <item lang="ru" id="rb_duration_short">Продолжительность</item>
+        <item lang="ru" id="rb_start_price">Начальная цена</item>
+        <item lang="ru" id="rb_start_duration">Начальная продолжительность</item>
+        <item lang="ru" id="rb_note">Комментарий</item>
+        <item lang="ru" id="rb_allow_setup_duration">Разрешить клиентам изменять продолжительность подписок</item>
+        <item lang="ru" id="rb_allow_unsubscribe">Разрешить клиентам отменять подписки</item>
+        <item lang="ru" id="rb_allow_buy_without_subscription">Разрешить покупку товаров без подписки</item>
+        <item lang="ru" id="rb_buy_product_without_subscription">Купить товар без подписки</item>
+        <item lang="ru" id="rb_new_plan">Новый периодический план</item>
+        <item lang="ru" id="rb_editing_plan">Редактировать периодический план</item>
+        <item lang="ru" id="rb_recurring_billing_settings">Настройки периодических платежей</item>
+        <item lang="ru" id="rb_add_recurring_plans_and_close">Добавить планы и закрыть</item>
+        <item lang="ru" id="rb_add_recurring_plans">Добавить планы</item>
+        <item lang="ru" id="rb_subscription">Подписка</item>
+        <item lang="ru" id="rb_subscriptions">Подписки</item>
+        <item lang="ru" id="rb_view_subscriptions">Просмотреть подписки</item>
+        <item lang="ru" id="rb_viewing_subscription">Просмотр подписок</item>
+        <item lang="ru" id="rb_unsubscribed">Подписка отменена</item>
+        <item lang="ru" id="rb_subscription_status">Статус подписки</item>
+        <item lang="ru" id="rb_subscribed_products">Товары в подписке</item>
+        <item lang="ru" id="rb_creation_date">Дата создания</item>
+        <item lang="ru" id="rb_period_type">Тип периода</item>
+        <item lang="ru" id="rb_subscription_events">События в подписках</item>
+        <item lang="ru" id="rb_attempt_charging">Попытка оплатить неудавшийся заказ</item>
+        <item lang="ru" id="rb_notification_manual_paying">Уведомление о платеже вручную</item>
+        <item lang="ru" id="rb_notification_future_paying">Уведомление о будущей оплате</item>
+        <item lang="ru" id="rb_charge_subscription">Оплата подписки</item>
+        <item lang="ru" id="rb_process_selected_events">Обработка событий по выбранной подписке</item>
+        <item lang="ru" id="rb_will_be_deleted_with_order">Подписка будет удалена вместе с заказом</item>
+        <item lang="ru" id="rb_will_be_charged_on">уведомление о предстоящей оплате</item>
+        <item lang="ru" id="rb_no_subscriptions_to_process">Обработанных подписок нет.</item>
+        <item lang="ru" id="rb_subscriptions_processed">Все подписки обработаны.</item>
+        <item lang="ru" id="rb_unsubscribed_status_not_changed">Нельзя изменить статус у отмененной подписки</item>
+        <item lang="ru" id="rb_duration_did_not_null">Продолжительность указана неверно</item>
+        <item lang="ru" id="rb_subscription_inactive">Подписка неактивна</item>
+        <item lang="ru" id="rb_have_events"><![CDATA[У вас имеются активные периодические события. <p><a href="[link]" class="underlined"><b>Обработать события &#155;&#155;</b></a></p>]]></item>
+        <item lang="ru" id="rb_subscription_charged">Плата за подписку успешно взята.</item>
+        <item lang="ru" id="rb_subscriptions_charged">Плата за подписки успешно взята.</item>
+        <item lang="ru" id="rb_pay">Оплата</item>
+        <item lang="ru" id="rb_edit_subscription">Изменить подписку</item>
+        <item lang="ru" id="rb_add_subscription">Добавить подписку</item>
+        <item lang="ru" id="rb_usergroup_plan">Покупателям, купившим товары по выбранным планам, будет назначена эта пользовательская группа</item>
+        <item lang="ru" id="rb_subscriptions_note">Посмотреть доступные подписки</item>
+        <item lang="ru" id="rb_settings_orders_tooltip"><![CDATA[Значение будет сохранено в языковой переменной '[name]'. Управление языковыми переменными на странице <a href="[link]">Языки</a>.]]></item>
+        <item lang="ru" id="privileges.manage_recurring_plans">Управление периодическими платежами</item>
+        <item lang="ru" id="privileges.manage_subscriptions">Управление подписками</item>
+        
+        <item lang="zh" id="rb_please_select_store_to_update">请选择商店来更新计划.</item>
+        <item lang="zh" id="rb_please_select_store">请选择一个商店.</item>
+        <item lang="zh" id="rb_manual_pay_email_subject">要求支付</item>
+        <item lang="zh" id="rb_manual_pay_email_header">订阅必须手动支付.</item>
+        <item lang="zh" id="rb_future_pay_email_subject">支付将至</item>
+        <item lang="zh" id="rb_future_pay_email_header">支付订阅将至.</item>
+        <item lang="zh" id="rb_subscription_changing_email_subject">订阅已变更</item>
+        <item lang="zh" id="rb_subscription_changing_email_header">订阅已变更.</item>
+        <item lang="zh" id="rb_recurring_plan">循环计划</item>
+        <item lang="zh" id="rb_notification_duration">通知时间(天)</item>
+        <item lang="zh" id="rb_recurring_plans">循环计划</item>
+        <item lang="zh" id="recurring_plans">循环计划</item>
+        <item lang="zh" id="rb_recurring_plan_id">循环计划ID</item>
+        <item lang="zh" id="rb_recurring_period">循环周期</item>
+        <item lang="zh" id="rb_recurring_period_value">循环周期值(天)</item>
+        <item lang="zh" id="rb_notification">通知</item>
+        <item lang="zh" id="rb_annually">每年</item>
+        <item lang="zh" id="rb_quarterly">每季</item>
+        <item lang="zh" id="rb_monthly">每月</item>
+        <item lang="zh" id="rb_weekly">每周</item>
+        <item lang="zh" id="rb_by_period">按周期</item>
+        <item lang="zh" id="rb_pay_day">结算日</item>
+        <item lang="zh" id="rb_price">循环价格</item>
+        <item lang="zh" id="rb_duration">循环时间(月)</item>
+        <item lang="zh" id="rb_duration_short">周期</item>
+        <item lang="zh" id="rb_start_price">循环开始价格</item>
+        <item lang="zh" id="rb_start_duration">循环开始时间</item>
+        <item lang="zh" id="rb_note">循环通知</item>
+        <item lang="zh" id="rb_allow_setup_duration">允许客户设置周期</item>
+        <item lang="zh" id="rb_allow_unsubscribe">允许客户取消订阅</item>
+        <item lang="zh" id="rb_allow_buy_without_subscription">允许购买没有订阅的产品</item>
+        <item lang="zh" id="rb_buy_product_without_subscription">购买没有订阅的产品</item>
+        <item lang="zh" id="rb_new_plan">新的循环计划</item>
+        <item lang="zh" id="rb_editing_plan">编辑循环计划</item>
+        <item lang="zh" id="rb_recurring_billing_settings">循环帐单设置</item>
+        <item lang="zh" id="rb_add_recurring_plans_and_close">添加循环计划并关闭</item>
+        <item lang="zh" id="rb_add_recurring_plans">添加循环计划</item>
+        <item lang="zh" id="rb_subscription">订阅</item>
+        <item lang="zh" id="rb_subscriptions">订阅</item>
+        <item lang="zh" id="rb_view_subscriptions">查看订阅</item>
+        <item lang="zh" id="rb_viewing_subscription">查看订阅</item>
+        <item lang="zh" id="rb_unsubscribed">取消订阅</item>
+        <item lang="zh" id="rb_subscription_status">订阅状态</item>
+        <item lang="zh" id="rb_subscribed_products">订阅的产品</item>
+        <item lang="zh" id="rb_creation_date">建立日期</item>
+        <item lang="zh" id="rb_period_type">周期类型</item>
+        <item lang="zh" id="rb_subscription_events">订阅事件</item>
+        <item lang="zh" id="rb_attempt_charging">尝试支付失败订单</item>
+        <item lang="zh" id="rb_notification_manual_paying">手动支付通知</item>
+        <item lang="zh" id="rb_notification_future_paying">未来支付通知</item>
+        <item lang="zh" id="rb_charge_subscription">收费订阅</item>
+        <item lang="zh" id="rb_process_selected_events">处理选择的事件</item>
+        <item lang="zh" id="rb_will_be_deleted_with_order">将和订单一起删除</item>
+        <item lang="zh" id="rb_will_be_charged_on">将收取</item>
+        <item lang="zh" id="rb_no_subscriptions_to_process">没有订阅要处理.</item>
+        <item lang="zh" id="rb_subscriptions_processed">所有订阅已处理.</item>
+        <item lang="zh" id="rb_unsubscribed_status_not_changed">取消订阅的订阅状态不能改变</item>
+        <item lang="zh" id="rb_duration_did_not_null">周期值无效</item>
+        <item lang="zh" id="rb_subscription_inactive">此订阅没有激活</item>
+        <item lang="zh" id="rb_have_events"><![CDATA[您已激活循环时间. <p><a href="[link]" class="underlined"><b>处理事件 &#155;&#155;</b></a></p>]]></item>
+        <item lang="zh" id="rb_subscription_charged">订阅已成功付费.</item>
+        <item lang="zh" id="rb_subscriptions_charged">订阅已成功付费.</item>
+        <item lang="zh" id="rb_pay">支付</item>
+        <item lang="zh" id="rb_edit_subscription">编辑订阅</item>
+        <item lang="zh" id="rb_add_subscription">添加订阅</item>
+        <item lang="zh" id="privileges.manage_recurring_plans">管理循环计划</item>
+        <item lang="zh" id="privileges.manage_subscriptions">管理订阅</item>
+        <item lang="en" id="process">Process</item>
+
+        <item lang="bg" id="rb_have_events"><![CDATA[Имате активни повтарящи се събития. <p><a href="[link]" class="underlined"><b>Към събитията &#155;&#155;</b></a></p>]]></item>
+        <item lang="bg" id="rb_subscriptions_processed">Всички абонаменти са обработени.</item>
+        <item lang="bg" id="rb_no_subscriptions_to_process">Няма абонамент за обработка.</item>
+        <item lang="bg" id="rb_subscription_charged">Абонаментът е променен успешно.</item>
+        <item lang="bg" id="rb_subscription_inactive">Абонаментът не е активен</item>
+        <item lang="bg" id="rb_recurring_plans">Повтарящи се планове</item>
+        <item lang="bg" id="rb_unsubscribed_status_not_changed">Не е позволена промяната на анулирани абонаменти</item>
+        <item lang="bg" id="rb_duration_did_not_null">Невалиден период</item>
+        <item lang="bg" id="rb_unsubscribed">Неабониран</item>
+        <item lang="bg" id="rb_add_recurring_plans">Добави повтарящи се планове</item>
+        <item lang="bg" id="rb_add_recurring_plans_and_close">Добави повтарящ се план и затвори</item>
+        <item lang="bg" id="rb_recurring_billing_settings">Повтарящи се настройки за фактуриране</item>
+        <item lang="bg" id="rb_recurring_period_value">Период (в дни)</item>
+        <item lang="bg" id="rb_pay_day">Ден на плащане</item>
+        <item lang="bg" id="rb_note">Коментар</item>
+        <item lang="bg" id="rb_allow_setup_duration">Дава възможност на клиентите да настройват период</item>
+        <item lang="bg" id="rb_allow_unsubscribe">Дава възможност на клиентите да се отписват</item>
+        <item lang="bg" id="rb_allow_buy_without_subscription">Позволява на клиентите да купуват продукти без абонамент</item>
+        <item lang="bg" id="rb_new_plan">Новият абонаментен план</item>
+        <item lang="bg" id="rb_editing_plan">Редактиране на абонаментен план</item>
+        <item lang="bg" id="rb_subscription_status">Статус на абонамента</item>
+        <item lang="bg" id="rb_recurring_plan_id">Повтарящ се план ID</item>
+        <item lang="bg" id="rb_subscribed_products">Абонирани продукти</item>
+        <item lang="bg" id="rb_will_be_deleted_with_order">ще бъдат изтрити заедно с поръчката</item>
+        <item lang="bg" id="process">Процес</item>
+        <item lang="bg" id="rb_process_selected_events">Обработка на избрани събития</item>
+        <item lang="bg" id="rb_subscription_events">Събития абонаменти</item>
+        <item lang="bg" id="rb_viewing_subscription">Преглед на абонамент</item>
+        <item lang="bg" id="rb_will_be_charged_on">ще бъдат изплатени</item>
+
+        <item lang="da" id="rb_have_events"><![CDATA[Du har aktive tilbagevendende begivenheder. <p> <A href =  "[link] " class =  "understregede "> <b> Process events>> </ b> </ a> </ p> ]]></item>
+        <item lang="da" id="rb_subscriptions_processed">Alle abonnementer er blevet behandlet.</item>
+        <item lang="da" id="rb_no_subscriptions_to_process">Der er ingen abonnementer til processen.</item>
+        <item lang="da" id="rb_subscription_charged">Abonnementet blev opkrævet succes.</item>
+        <item lang="da" id="rb_subscription_inactive">Abonnementet er ikke aktiv</item>
+        <item lang="da" id="rb_recurring_plans">Tilbagevendende planer</item>
+        <item lang="da" id="rb_unsubscribed_status_not_changed">Har ikke mulighed for at ændre status for afmeldt tegning</item>
+        <item lang="da" id="rb_duration_did_not_null">Varighed value er ikke gyldig</item>
+        <item lang="da" id="rb_unsubscribed">Afmeldte</item>
+        <item lang="da" id="rb_add_recurring_plans">Tilføj tilbagevendende planer</item>
+        <item lang="da" id="rb_add_recurring_plans_and_close">Tilføj tilbagevendende planer og lukke</item>
+        <item lang="da" id="rb_recurring_billing_settings">Tilbagevendende fakturering indstillinger</item>
+        <item lang="da" id="rb_recurring_period_value">tilbagevendende værdi (dage)</item>
+        <item lang="da" id="rb_pay_day">Pay Day</item>
+        <item lang="da" id="rb_note">Tilbagevendende note</item>
+        <item lang="da" id="rb_allow_setup_duration">Tillad kunder til at oprette varighed</item>
+        <item lang="da" id="rb_allow_unsubscribe">Tillad kunder til at afmelde</item>
+        <item lang="da" id="rb_allow_buy_without_subscription">Tillad at købe produkter uden abonnement</item>
+        <item lang="da" id="rb_new_plan">Nye tilbagevendende planen</item>
+        <item lang="da" id="rb_editing_plan">redigering tilbagevendende planen</item>
+        <item lang="da" id="rb_recurring_plan_id">Tilbagevendende planen ID</item>
+        <item lang="da" id="rb_subscribed_products">abonnerede produkter</item>
+        <item lang="da" id="rb_will_be_deleted_with_order">vil blive slettet sammen med henblik</item>
+        <item lang="da" id="process">bearbejde</item>
+        <item lang="da" id="rb_process_selected_events">Proces udvalgte begivenheder</item>
+        <item lang="da" id="rb_viewing_subscription">Ser abonnement</item>
+        <item lang="da" id="rb_will_be_charged_on">vil blive opkrævet på</item>
+
+        <item lang="de" id="process">Prozess</item>
+
+        <item lang="el" id="rb_have_events"><![CDATA[Έχετε ενεργά επαναλαμβανόμενα γεγονότα. <p><a href="[link]" class="underlined"><b>Διαδικασία γεγονότος &#155&#155</b></a></p>]]></item>
+        <item lang="el" id="rb_subscriptions_processed">Όλες οι συνδρομές επεξεργάστηκαν</item>
+        <item lang="el" id="rb_no_subscriptions_to_process">Δεν υπάρχουν συνδρομές για επεξεργασία.</item>
+        <item lang="el" id="rb_subscription_charged">Η συνδρομή άλλαξε επιτυχώς</item>
+        <item lang="el" id="rb_subscription_inactive">Η συνδρομή δεν είναι ενεργή</item>
+        <item lang="el" id="rb_recurring_plans">Επαναλαμβανόμενα σχέδιο</item>
+        <item lang="el" id="rb_unsubscribed_status_not_changed">Δεν επετράπη αλλαγή της κατάστασης για ακυρωμένες συνδρομές</item>
+        <item lang="el" id="rb_duration_did_not_null">Η αξία διάρκειας δεν είναι έγκυρη</item>
+        <item lang="el" id="rb_unsubscribed">Μν εγγεγραμμένος</item>
+        <item lang="el" id="rb_add_recurring_plans">Προσθήκη επαναλαμβανόμενων σχεδίων</item>
+        <item lang="el" id="rb_add_recurring_plans_and_close">Προσθήκη επαναλαμβανόμενων σχεδίων και κλείσιμο</item>
+        <item lang="el" id="rb_recurring_billing_settings">Επαναλαμβανόμενες ρυθμίσεις χρέωσης</item>
+        <item lang="el" id="rb_recurring_period_value">Επαναλαμβανόμενη τιμή περιόδου (ημέρες)</item>
+        <item lang="el" id="rb_pay_day">Ημέρα πληρωμής</item>
+        <item lang="el" id="rb_note">Επαναλαμβανόμενη σημείωση</item>
+        <item lang="el" id="rb_allow_setup_duration">Δυνατότητα πελατών να δημιουργήσουν την διάρκεια</item>
+        <item lang="el" id="rb_allow_unsubscribe">Δυνατότητα πελατών να διαγραφούν</item>
+        <item lang="el" id="rb_allow_buy_without_subscription">Δυνατότητα πελατών να αγοράσουν προϊόντα χωρίς συνδρομή</item>
+        <item lang="el" id="rb_new_plan">Νέ επαναλαμβανόμενο σχέδιο</item>
+        <item lang="el" id="rb_editing_plan">Επεξεργασία επαναλαμβανόμενου σχεδίου</item>
+        <item lang="el" id="rb_subscription_status">Κατάσταση συνδρομής</item>
+        <item lang="el" id="rb_recurring_plan_id">ID επαναλαμβανόμενου σχεδίου</item>
+        <item lang="el" id="rb_subscribed_products">Εγγεγραμμένα προιόντα</item>
+        <item lang="el" id="rb_will_be_deleted_with_order">θα διαγραφεί μαζί με την παραγγελία</item>
+        <item lang="el" id="process">Διαδικασία</item>
+        <item lang="el" id="rb_process_selected_events">Διαδικασία επιλεγμένων εκδηλώσεων</item>
+        <item lang="el" id="rb_subscription_events">Γεγονότα συνδρομών</item>
+        <item lang="el" id="rb_viewing_subscription">Επισκόπηση συνδρομής</item>
+        <item lang="el" id="rb_will_be_charged_on">θα χρεωθεί στο</item>
+
+        <item lang="es" id="process">Procesar</item>
+
+        <item lang="fr" id="process">Processus</item>
+
+        <item lang="it" id="rb_have_events"><![CDATA[Hai attivato eventi ricorrenti. <p><a href="[link]" class="underlined"><b>Process events &#155;&#155;</b></a></p>]]></item>
+        <item lang="it" id="rb_please_select_store_to_update">Si prega di selezionare negozio per aggiornare il piano.</item>
+        <item lang="it" id="rb_please_select_store">Si prega di selezionare un negozio.</item>
+        <item lang="it" id="rb_subscriptions_processed">Tutti gli abbonamenti sono stati trasformati.</item>
+        <item lang="it" id="rb_no_subscriptions_to_process">Non ci sono abbonamenti da processare</item>
+        <item lang="it" id="rb_subscription_charged">L'abbonamento è stato cambiato con successo.</item>
+        <item lang="it" id="rb_subscription_inactive">L'abbonamento non è attivo</item>
+        <item lang="it" id="rb_future_pay_email_header">Il pagamento per la sottoscrizione si avvicina.</item>
+        <item lang="it" id="rb_future_pay_email_subject">Il pagamento si avvicina.</item>
+        <item lang="it" id="rb_manual_pay_email_header">L'abbonamento deve essere pagato manualmente.</item>
+        <item lang="it" id="rb_manual_pay_email_subject">Pagamento richiesto</item>
+        <item lang="it" id="rb_recurring_plans">Piani ricorrenti</item>
+        <item lang="it" id="rb_unsubscribed_status_not_changed">Non permette di modificare lo stato agli abbonamenti cancellati</item>
+        <item lang="it" id="rb_subscription_changing_email_header">L'abbonamento è stato cambiato.</item>
+        <item lang="it" id="rb_subscription_changing_email_subject">L'abbonamento è stato cambiato.</item>
+        <item lang="it" id="rb_duration_did_not_null">Valore della durata non è valido</item>
+        <item lang="it" id="rb_unsubscribed">Cancellazione</item>
+        <item lang="it" id="rb_add_recurring_plans">Aggiungi piani ricorrenti</item>
+        <item lang="it" id="rb_add_recurring_plans_and_close">Aggiungi piani ricorrenti e chiudi</item>
+        <item lang="it" id="rb_recurring_billing_settings">Impostazioni di fatturazione ricorrenti</item>
+        <item lang="it" id="rb_recurring_period_value">Valore del periodo ricorrente (giorni)</item>
+        <item lang="it" id="rb_pay_day">Giorno di paga</item>
+        <item lang="it" id="rb_note">Nota ricorrente.</item>
+        <item lang="it" id="rb_allow_setup_duration">Consentire ai clienti di impostare la durata</item>
+        <item lang="it" id="rb_allow_unsubscribe">Consentire ai clienti di annullare l'iscrizione</item>
+        <item lang="it" id="rb_allow_buy_without_subscription">Permette di acquistare prodotti senza abbonamento</item>
+        <item lang="it" id="rb_new_plan">Nuovo piano ricorrente.</item>
+        <item lang="it" id="rb_editing_plan">Modifica piano ricorrente</item>
+        <item lang="it" id="rb_subscription_status">Stato abbonamento</item>
+        <item lang="it" id="rb_recurring_plan_id">ID piano ricorrente</item>
+        <item lang="it" id="rb_subscribed_products">Prodotti abbonamenti</item>
+        <item lang="it" id="rb_will_be_deleted_with_order">Verranno eliminati insieme con l'ordine</item>
+        <item lang="it" id="process">Processa</item>
+        <item lang="it" id="rb_process_selected_events">Processo eventi selezionati</item>
+        <item lang="it" id="rb_subscription_events">Eventi abbonamenti</item>
+        <item lang="it" id="rb_viewing_subscription">Visualizzazione abbonamento</item>
+        <item lang="it" id="rb_will_be_charged_on">Verrà addebitato</item>
+
+        <item lang="nl" id="process">Proces</item>
+
+        <item lang="no" id="rb_have_events"><![CDATA[Du har aktive periodiske begivenheter. <p><a href="[link]" class="underlined"><b>Prosesser begivenheter &#155;&#155;</b></a></p>]]></item>
+        <item lang="no" id="rb_subscriptions_processed">Alle abonnementer ble behandlet.</item>
+        <item lang="no" id="rb_no_subscriptions_to_process">Det er ingen abonnementer å behandle.</item>
+        <item lang="no" id="rb_subscription_charged">Abonnementet ble belastet vellykket.</item>
+        <item lang="no" id="rb_subscription_inactive">Abonnementet er ikke aktivt</item>
+        <item lang="no" id="rb_recurring_plans">Periodiske planer</item>
+        <item lang="no" id="rb_unsubscribed_status_not_changed">Tillot ikke endring av status for kansellert abonnement</item>
+        <item lang="no" id="rb_duration_did_not_null">Varighetsverdi er ikke gyldig</item>
+        <item lang="no" id="rb_unsubscribed">Abonnement stoppet</item>
+        <item lang="no" id="rb_add_recurring_plans">Legg til periodiske planer</item>
+        <item lang="no" id="rb_add_recurring_plans_and_close">Legg til periodiske planer og lukk</item>
+        <item lang="no" id="rb_recurring_billing_settings">Periodiske faktureringsinnstillinger</item>
+        <item lang="no" id="rb_recurring_period_value">Periodisk syklusverdi (dager)</item>
+        <item lang="no" id="rb_pay_day">Betalingsdag</item>
+        <item lang="no" id="rb_note">Periodisk notat</item>
+        <item lang="no" id="rb_allow_setup_duration">Tillat kunder å sette opp varighet</item>
+        <item lang="no" id="rb_allow_unsubscribe">Tillat kunder å si opp abonnementet</item>
+        <item lang="no" id="rb_allow_buy_without_subscription">Tillat kunder å kjøpe produkter uten abonnement</item>
+        <item lang="no" id="rb_new_plan">Ny periodisk plan</item>
+        <item lang="no" id="rb_editing_plan">Redigerer periodisk plan</item>
+        <item lang="no" id="rb_subscription_status">Abonnementstatus</item>
+        <item lang="no" id="rb_recurring_plan_id">Periodisk plan ID</item>
+        <item lang="no" id="rb_subscribed_products">Abonnerte produkter</item>
+        <item lang="no" id="rb_will_be_deleted_with_order">vil bli slettet sammen med ordren</item>
+        <item lang="no" id="process">Behandle</item>
+        <item lang="no" id="rb_process_selected_events">Prosesser valgte begivenheter</item>
+        <item lang="no" id="rb_subscription_events">Abonnement begivenheter</item>
+        <item lang="no" id="rb_viewing_subscription">Viser abonnement</item>
+        <item lang="no" id="rb_will_be_charged_on">vil belastes på</item>
+
+        <item lang="ro" id="rb_have_events"><![CDATA[Aveți evenimente repetate active. <p><a href="[link]" class="underlined"><b>Procesare evenimente &#155;&#155;</b></a></p>]]></item>
+        <item lang="ro" id="rb_subscriptions_processed">Toate abonamentele au fost procesate</item>
+        <item lang="ro" id="rb_no_subscriptions_to_process">Nu există abonamente de procesat.</item>
+        <item lang="ro" id="rb_subscription_charged">Abonamentul a fost taxat cu succes.</item>
+        <item lang="ro" id="rb_subscription_inactive">Abonamentul nu este activ</item>
+        <item lang="ro" id="rb_recurring_plans">Planuri universale</item>
+        <item lang="ro" id="rb_unsubscribed_status_not_changed">Nu permite schimbarea statutului abonamentului la care e dezabonat</item>
+        <item lang="ro" id="rb_duration_did_not_null">Valoarea duratei nu este validă</item>
+        <item lang="ro" id="rb_unsubscribed">Dezabonat</item>
+        <item lang="ro" id="rb_add_recurring_plans">Adaugă planuri universale</item>
+        <item lang="ro" id="rb_add_recurring_plans_and_close">Adaugă planuri universale și închide</item>
+        <item lang="ro" id="rb_recurring_billing_settings">Setări de facturare universale</item>
+        <item lang="ro" id="rb_recurring_period_value">Valoarea perioadei universale (zile)</item>
+        <item lang="ro" id="rb_pay_day">Plată zilnică</item>
+        <item lang="ro" id="rb_note">Note universale</item>
+        <item lang="ro" id="rb_allow_setup_duration">Permite clienților să seteze durata</item>
+        <item lang="ro" id="rb_allow_unsubscribe">Permite clienților dezabonarea</item>
+        <item lang="ro" id="rb_allow_buy_without_subscription">Permite cumpărarea produselor fără înregistrare</item>
+        <item lang="ro" id="rb_new_plan">Plan nou universal</item>
+        <item lang="ro" id="rb_editing_plan">Editare plan universal</item>
+        <item lang="ro" id="rb_subscription_status">Statutul abonamentului</item>
+        <item lang="ro" id="rb_recurring_plan_id">ID-ul Planului universal</item>
+        <item lang="ro" id="rb_subscribed_products">Produse subscrise</item>
+        <item lang="ro" id="rb_will_be_deleted_with_order">va fi șters împreună cu comanda</item>
+        <item lang="ro" id="process">Procesați</item>
+        <item lang="ro" id="rb_process_selected_events">Procesează evenimentele selectate</item>
+        <item lang="ro" id="rb_subscription_events">Evenimente abonamente</item>
+        <item lang="ro" id="rb_viewing_subscription">Vizualizare abonament</item>
+        <item lang="ro" id="rb_will_be_charged_on">va fi taxat în</item>
+
+        <item lang="ru" id="process">Процесс</item>
+
+        <item lang="sl" id="rb_have_events"><![CDATA[Imate aktivne ponavljajoče se dogodke. <p><a href="[link]" class="underlined"><b>Proces dogodkov &#155;&#155;</b></a></p>]]></item>
+        <item lang="sl" id="rb_subscriptions_processed">Vse naročnine so bile obdelane</item>
+        <item lang="sl" id="rb_no_subscriptions_to_process">Ni naročnin na proces.</item>
+        <item lang="sl" id="rb_subscription_charged">Naročnina je bil zaračunana uspešno.</item>
+        <item lang="sl" id="rb_subscription_inactive">Naročnina ni aktivna</item>
+        <item lang="sl" id="rb_recurring_plans">Ponavljajoči načrti</item>
+        <item lang="sl" id="rb_unsubscribed_status_not_changed">Ni bilo mogoče spremeniti statusa za vpis odjave</item>
+        <item lang="sl" id="rb_duration_did_not_null">Trajanje vrednosti ni veljavna</item>
+        <item lang="sl" id="rb_unsubscribed">Odjavili</item>
+        <item lang="sl" id="rb_add_recurring_plans">Dodaj ponavljajoče načrte</item>
+        <item lang="sl" id="rb_add_recurring_plans_and_close">Dodaj ponavljajoče načrte in zapri</item>
+        <item lang="sl" id="rb_recurring_billing_settings">Nastavitve ponavljajočega se zaračunavanja</item>
+        <item lang="sl" id="rb_recurring_period_value">Ponavljajoče obdobje vrednosti (dni)</item>
+        <item lang="sl" id="rb_pay_day">Plačilni dan</item>
+        <item lang="sl" id="rb_note">Ponavljajoča opomba</item>
+        <item lang="sl" id="rb_allow_setup_duration">Dovoli strankam, da vzpostavijo trajanja</item>
+        <item lang="sl" id="rb_allow_unsubscribe">Dovoli stranki odjavo</item>
+        <item lang="sl" id="rb_new_plan">Nov ponavljajoči načrt</item>
+        <item lang="sl" id="rb_editing_plan">Urejanje ponavljajočih načrtov</item>
+        <item lang="sl" id="rb_subscription_status">Status naročnine</item>
+        <item lang="sl" id="rb_recurring_plan_id">ID ponavljajočega se načrta</item>
+        <item lang="sl" id="rb_subscribed_products">Naročeni izdelki</item>
+        <item lang="sl" id="rb_will_be_deleted_with_order">Bo izbrisan skupaj z računom</item>
+        <item lang="sl" id="process">Obdelava</item>
+        <item lang="sl" id="rb_process_selected_events">Proces izbranih dogodkov</item>
+        <item lang="sl" id="rb_subscription_events">Naročnina dogodkov</item>
+        <item lang="sl" id="rb_viewing_subscription">Pregledovanje naročnine</item>
+        <item lang="sl" id="rb_will_be_charged_on">se zaračuna na</item>
+        <item lang="sl" id="privileges.manage_recurring_plans">Upravljanje ponavljajočih načrtov</item>
+        <item lang="sl" id="privileges.manage_subscriptions">Upravljanje naročnin</item>
+
+        <item lang="zh" id="buy_together_is_not_compatible_with_recurring_billing">[product_name] 产品无法添加到组合中. 一起购买与附加周期性帐单不一致</item>
+        <item lang="zh" id="process">处理</item>
+        <item lang="bg" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Продължителност на първоначалния период.</item>
+
+        <item lang="da" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Varighed af den oprindelige frist.</item>
+
+        <item lang="el" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Διάρκεια της αρχικής περιόδου.</item>
+
+        <item lang="it" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Durata del periodo iniziale</item>
+
+        <item lang="nl" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Duur van de start-periode.</item>
+
+        <item lang="no" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Varighet av den initielle perioden.</item>
+
+        <item lang="ro" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Durata perioadei inițiale.</item>
+
+        <item lang="ru" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Длительность начального периода.</item>
+
+        <item lang="zh" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">初始期限内.</item>
+    </language_variables>
+</addon>

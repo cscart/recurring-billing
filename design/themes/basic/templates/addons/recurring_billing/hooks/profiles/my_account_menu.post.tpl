@@ -1,0 +1,1 @@
+<li><a href="{"subscriptions.search"|fn_url}" rel="nofollow">{__("rb_subscriptions")}</a></li>
