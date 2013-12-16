@@ -52,7 +52,7 @@
             {/if}
             {if $subscription.plan_info.allow_unsubscribe == "Y"}
                 <div class="float-right">
-                {include file="buttons/button.tpl" but_name="dispatch[subscriptions.unsubscribe]" but_text=__("unsubscribe")}
+                {include file="buttons/button.tpl" but_name="dispatch[subscriptions.unsubscribe]" but_text=__("rb_unsubscribe")}
                 </div>
             {/if}
         </div>

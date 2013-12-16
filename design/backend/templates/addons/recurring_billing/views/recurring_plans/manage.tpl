@@ -58,7 +58,7 @@
 {/capture}
 
 {capture name="adv_buttons"}
-    {btn type="add" title=__("add_plan") href="recurring_plans.add"}
+    {btn type="add" title=__("rb_add_plan") href="recurring_plans.add"}
 {/capture}
 
 {capture name="sidebar"}

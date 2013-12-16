@@ -727,6 +727,31 @@
         <item lang="sl" id="privileges.manage_recurring_plans">Upravljanje ponavljajočih načrtov</item>
         <item lang="sl" id="privileges.manage_subscriptions">Upravljanje naročnin</item>
 
+        <item id="rb_add_plan" lang="en">Add plan</item>
+        <item id="rb_add_plan" lang="ru">Добавить план</item>
+        <item id="rb_add_plan" lang="zh">添加计划</item>
+        <item id="rb_add_plan" lang="it">Aggiungi piano</item>
+        <item id="rb_add_plan" lang="el">Προσθήκη Σχεδίου</item>
+        <item id="rb_add_plan" lang="bg">Добави план</item>
+        <item id="rb_add_plan" lang="ro">Adăugați un plan</item>
+        <item id="rb_add_plan" lang="sl">Dodaj načrt</item>
+        <item id="rb_add_plan" lang="no">Legg til Plan</item>
+        <item id="rb_add_plan" lang="da">Tilføj plan</item>
+        <item id="rb_add_plan" lang="fr">Ajouter un plan</item>
+
+        <item id="rb_unsubscribe" lang="en">Unsubscribe</item>
+        <item id="rb_unsubscribe" lang="ru">Отменить подписку</item>
+        <item id="rb_unsubscribe" lang="zh">取消订阅</item>
+        <item id="rb_unsubscribe" lang="it">Disiscrivi</item>
+        <item id="rb_unsubscribe" lang="el">Ανίκανος εγράφης</item>
+        <item id="rb_unsubscribe" lang="bg">Отписване</item>
+        <item id="rb_unsubscribe" lang="ro">Dezabonare</item>
+        <item id="rb_unsubscribe" lang="sl">Odnaroči</item>
+        <item id="rb_unsubscribe" lang="no">Stopp abonnement</item>
+        <item id="rb_unsubscribe" lang="da">Afmeld</item>
+        <item id="rb_unsubscribe" lang="fr">Se désabonner</item>
+        <item id="rb_unsubscribe" lang="es">No suscribir</item>
+
         <item lang="zh" id="buy_together_is_not_compatible_with_recurring_billing">[product_name] 产品无法添加到组合中. 一起购买与附加周期性帐单不一致</item>
         <item lang="zh" id="process">处理</item>
         <item lang="bg" id="tt_addons_recurring_billing_views_recurring_plans_update_rb_start_duration">Продължителност на първоначалния период.</item>

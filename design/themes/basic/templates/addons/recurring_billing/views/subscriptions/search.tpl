@@ -49,7 +49,7 @@
     <td>
         {if $sub.allow_unsubscribe == "Y"}
             {assign var="need_update" value=true}
-            <a href="{"subscriptions.unsubscribe?subscription_id=`$sub.subscription_id`"|fn_url}">{__("unsubscribe")}</a>
+            <a href="{"subscriptions.unsubscribe?subscription_id=`$sub.subscription_id`"|fn_url}">{__("rb_unsubscribe")}</a>
         {else}
             &nbsp;
         {/if}
